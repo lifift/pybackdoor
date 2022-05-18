@@ -19,7 +19,7 @@ while 1:
             conn.settimeout(1)
             print("### Connection established with : "+ str(addr[0]))
 
-            while True:
+            while 1:
                 command = input(">>> ")
                 if command !="exit":
                     if command =="": continue

@@ -1,4 +1,4 @@
-import socket, subprocess as sp,sys
+import socket,sys
 
 try :
     host = sys.argv[1]
@@ -16,7 +16,7 @@ while 1:
         print("### Listening on %s:%d" %(host,port))
         conn, addr = s.accept()
         with conn :
-            conn.settimeout(1)
+            
             print("### Connection established with : "+ str(addr[0]))
 
             while 1:
@@ -28,7 +28,9 @@ while 1:
                     while True :
                         try :
                             chunk = conn.recv(1024).decode("utf-8")
+                            conn.settimeout(1)
                         except:
+                            conn.settimeout(3600)
                             break
                         if not chunk: break
                         fragments.append(chunk)

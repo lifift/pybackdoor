@@ -27,14 +27,12 @@ while 1:
                     fragments=[]
                     while True :
                         try :
-                            chunk = conn.recv(1024)
-                            if not command.startswith('dl'):
-                                chunk = conn.recv(1024).decode("utf-8")
-                            print(chunk)
+                            if command.startswith('dl'):
+                                chunk = conn.recv(1024)
+                            else : chunk = conn.recv(1024).decode("utf-8")
                             conn.settimeout(1)
                         except Exception as e:
-                            print (e)
-                            conn.settimeout(3600)
+                            conn.settimeout(2)
                             break
                         if not chunk: break
                         fragments.append(chunk)

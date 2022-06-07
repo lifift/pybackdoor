@@ -32,7 +32,7 @@ while 1:
                             else : chunk = conn.recv(1024).decode("utf-8")
                             conn.settimeout(1)
                         except Exception as e:
-                            conn.settimeout(2)
+                            conn.settimeout(60)
                             break
                         if not chunk: break
                         fragments.append(chunk)
@@ -47,4 +47,7 @@ while 1:
                 else :
                     conn.sendall(b"exit")
                     print ("### Connection closed")
+                    conn.close()
+                    s.close()
                     break
+    break

